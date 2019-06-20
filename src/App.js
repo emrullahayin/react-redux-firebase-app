@@ -1,10 +1,17 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+import Navbar from "./components/layout/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
-    </div>
+    <Router>
+      <CssBaseline />
+      <div className="App">
+        <Navbar />
+      </div>
+    </Router>
   );
 }
 
