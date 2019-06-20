@@ -4,7 +4,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Navbar from "./components/layout/Navbar";
 
-function App() {
+export default function App() {
   return (
     <Router>
       <CssBaseline />
@@ -14,5 +14,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
