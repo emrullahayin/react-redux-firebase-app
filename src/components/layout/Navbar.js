@@ -12,13 +12,19 @@ import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    position: "relative",
+    zIndex: 1
   },
   title: {
     flexGrow: 1
   },
   brandLogo: {
-    color: "white"
+    color: "white",
+    "&:hover": {
+      textDecoration: "none",
+      userSelect: "none"
+    }
   }
 }));
 
