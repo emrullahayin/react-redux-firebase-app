@@ -35,7 +35,7 @@ const Navbar = () => {
                 Firebase App
               </Link>
             </Typography>
-            {auth ? <SignedInLinks /> : <SignedOutLinks />}
+            {!auth ? <SignedInLinks /> : <SignedOutLinks />}
           </Toolbar>
         </Container>
       </AppBar>
