@@ -1,10 +1,9 @@
 import React, { useState } from "react";
+
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-
-import Link from "@material-ui/core/Link";
 
 import { NavLinkRouter } from "../config/NavLinkRouter";
 
@@ -46,15 +45,11 @@ const SignedInLinks = () => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>
-          <Link to="/projects" component={NavLinkRouter}>
-            New Project
-          </Link>
+        <MenuItem onClick={handleClose} to="/create" component={NavLinkRouter}>
+          New Project
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Link to="/logout" component={NavLinkRouter}>
-            Logout
-          </Link>
+        <MenuItem to="/" component={NavLinkRouter} onClick={handleClose}>
+          Logout
         </MenuItem>
       </Menu>
     </div>
