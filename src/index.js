@@ -2,9 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducers from "./store/reducers/rootReducer";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+const store = createStore(rootReducers);
 
 const theme = createMuiTheme({
   palette: {
@@ -16,9 +20,7 @@ const theme = createMuiTheme({
     }
   },
   props: {
-    // Name of the component ⚛️
     MuiButtonBase: {
-      // The default props to change
       disableRipple: true // No more ripple, on the whole application 💣!
     }
   }
@@ -26,7 +28,9 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </ThemeProvider>,
   document.getElementById("root")
 );
