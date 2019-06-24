@@ -24,7 +24,7 @@ const SignedOutLinks = () => {
       <Button
         color="inherit"
         variant="outlined"
-        to="/login"
+        to="/signin"
         component={NavLinkRouter}
       >
         Login

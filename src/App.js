@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Navbar from "./components/layout/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import ProjectDetails from "./components/projects/ProjectDetails";
+import SignIn from "./components/auth/SignIn";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -33,6 +34,7 @@ export default function App() {
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route path="/project/:id" component={ProjectDetails} />
+              <Route path="/signin" component={SignIn} />
             </Switch>
           </Grid>
         </Container>
