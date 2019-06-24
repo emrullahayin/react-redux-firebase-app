@@ -7,9 +7,14 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    margin: "20px auto",
-    textAlign: "center",
-    maxWidth: "500px"
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    maxWidth: 360,
+    margin: "auto",
+    backgroundColor: theme.palette.background.paper,
+    padding: 15,
+    marginTop: 15
   },
   button: {
     margin: theme.spacing(1)

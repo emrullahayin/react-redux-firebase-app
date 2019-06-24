@@ -7,9 +7,14 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    margin: "20px auto",
-    textAlign: "center",
-    maxWidth: "500px"
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    maxWidth: 360,
+    margin: "auto",
+    backgroundColor: theme.palette.background.paper,
+    padding: 15,
+    marginTop: 15
   },
   button: {
     margin: theme.spacing(1)
@@ -46,7 +51,7 @@ const SignUp = () => {
         Sign Up
       </Typography>
       <TextField
-        id="signup-password-input"
+        id="firstname-password-input"
         label="First Name"
         className={classes.textField}
         value={values.firstName}
@@ -57,7 +62,7 @@ const SignUp = () => {
         fullWidth
       />
       <TextField
-        id="signup-password-input"
+        id="lastname-password-input"
         label="Last Name"
         className={classes.textField}
         value={values.lastName}

@@ -27,11 +27,7 @@ export default function App() {
       <div className="App">
         <Navbar />
         <Container className={classes.container}>
-          <Grid
-            container
-            spacing={3}
-            style={{ backgroundColor: "#cfe8fc", minHeight: "100vh" }}
-          >
+          <Grid container spacing={3} style={{ minHeight: "100vh" }}>
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route path="/project/:id" component={ProjectDetails} />

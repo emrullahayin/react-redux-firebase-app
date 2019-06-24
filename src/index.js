@@ -7,6 +7,14 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
 const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#779ecb",
+      light: "#9cb8d9",
+      dark: "#5284bd",
+      contrastText: "#ffffff"
+    }
+  },
   props: {
     // Name of the component ⚛️
     MuiButtonBase: {
@@ -15,6 +23,8 @@ const theme = createMuiTheme({
     }
   }
 });
+
+console.log(createMuiTheme());
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
