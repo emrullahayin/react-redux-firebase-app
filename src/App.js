@@ -7,6 +7,7 @@ import Container from "@material-ui/core/Container";
 
 import Navbar from "./components/layout/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
+import ProjectDetails from "./components/projects/ProjectDetails";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -25,6 +26,7 @@ export default function App() {
         <Container className={classes.container}>
           <Switch>
             <Route exact path="/" component={Dashboard} />
+            <Route path="/project/:id" component={ProjectDetails} />
           </Switch>
         </Container>
       </div>
