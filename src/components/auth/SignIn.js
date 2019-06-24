@@ -8,7 +8,8 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles(theme => ({
   container: {
     margin: "20px auto",
-    textAlign: "center"
+    textAlign: "center",
+    maxWidth: "500px"
   },
   button: {
     margin: theme.spacing(1)
