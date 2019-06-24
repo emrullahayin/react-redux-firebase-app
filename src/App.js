@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 
 import Navbar from "./components/layout/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -24,10 +25,16 @@ export default function App() {
       <div className="App">
         <Navbar />
         <Container className={classes.container}>
-          <Switch>
-            <Route exact path="/" component={Dashboard} />
-            <Route path="/project/:id" component={ProjectDetails} />
-          </Switch>
+          <Grid
+            container
+            spacing={3}
+            style={{ backgroundColor: "#cfe8fc", minHeight: "100vh" }}
+          >
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route path="/project/:id" component={ProjectDetails} />
+            </Switch>
+          </Grid>
         </Container>
       </div>
     </Router>
