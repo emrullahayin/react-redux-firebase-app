@@ -3,15 +3,19 @@ import Grid from "@material-ui/core/Grid";
 
 import ProjectSummary from "./ProjectSummary";
 
-const ProjectList = () => {
+const ProjectList = ({ projects }) => {
   return (
     <React.Fragment>
       <Grid item xs={12}>
-        <ProjectSummary />
-        <ProjectSummary />
-        <ProjectSummary />
-        <ProjectSummary />
-        <ProjectSummary />
+        {projects.map((project, i) => {
+          return (
+            <ProjectSummary
+              key={i}
+              title={project.title}
+              content={project.content}
+            />
+          );
+        })}
       </Grid>
     </React.Fragment>
   );
