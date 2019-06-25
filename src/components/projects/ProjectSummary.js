@@ -12,17 +12,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ProjectSummary = () => {
+const ProjectSummary = ({ project }) => {
   const classes = useStyles();
   return (
     <Card className={classes.card}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          Lizard
+          {project.title}
         </Typography>
         <Typography variant="body2" component="p">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {project.content}
         </Typography>
         <Typography variant="overline" component="p" color="textSecondary">
           September 14, 2016

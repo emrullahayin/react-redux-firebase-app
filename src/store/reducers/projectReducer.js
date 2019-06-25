@@ -1,4 +1,4 @@
-const initState = {
+const initialState = {
   projects: [
     {
       id: 1,
@@ -29,41 +29,15 @@ const initState = {
       title: "Carrots - Jumbo",
       content:
         "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero."
-    },
-    {
-      id: 6,
-      title: "Beef - Inside Round",
-      content:
-        "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui."
-    },
-    {
-      id: 7,
-      title: "Juice - V8, Tomato",
-      content:
-        "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede."
-    },
-    {
-      id: 8,
-      title: "Veal - Round, Eye Of",
-      content:
-        "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh."
-    },
-    {
-      id: 9,
-      title: "Oil - Olive Bertolli",
-      content:
-        "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi."
-    },
-    {
-      id: 10,
-      title: "Bread - Flat Bread",
-      content:
-        "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
     }
   ]
 };
 
-const projectReducer = (state = initState, action) => {
+const projectReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "CREATE_PROJECT":
+      console.log("create project", action.project);
+  }
   return state;
 };
 

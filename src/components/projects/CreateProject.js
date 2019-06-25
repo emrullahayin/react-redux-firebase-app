@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { createProject } from "../../store/actions/projectActions";
 
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -35,7 +37,7 @@ const CreateProject = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(values);
+    createProject(values);
   };
 
   return (
@@ -87,4 +89,13 @@ const CreateProject = () => {
   );
 };
 
-export default CreateProject;
+const mapDispatchToProps = dispatch => {
+  return {
+    createProject: project => dispatch(createProject(project))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateProject);

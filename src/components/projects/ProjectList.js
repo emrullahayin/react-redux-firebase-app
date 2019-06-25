@@ -7,15 +7,10 @@ const ProjectList = ({ projects }) => {
   return (
     <React.Fragment>
       <Grid item xs={12}>
-        {projects.map((project, i) => {
-          return (
-            <ProjectSummary
-              key={i}
-              title={project.title}
-              content={project.content}
-            />
-          );
-        })}
+        {projects &&
+          projects.map(project => {
+            return <ProjectSummary key={project.id} project={project} />;
+          })}
       </Grid>
     </React.Fragment>
   );
