@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   textField: {}
 }));
 
-const CreateProject = () => {
+const CreateProject = ({ createProject }) => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     title: "",
