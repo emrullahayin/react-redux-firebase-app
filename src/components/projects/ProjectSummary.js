@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -24,11 +26,19 @@ const ProjectSummary = ({ project }) => {
           {project.content}
         </Typography>
         <Typography variant="overline" component="p" color="textSecondary">
-          September 14, 2016
+          {project.createdAt.seconds}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          color="primary"
+          to={{
+            pathname: `/project/${project.id}`,
+            state: { project: project }
+          }}
+          component={Link}
+        >
           Learn More
         </Button>
       </CardActions>

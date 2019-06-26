@@ -4,21 +4,21 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
-const ProjectDetails = props => {
-  const id = props.match.params.id;
+const ProjectDetails = ({ location }) => {
+  const project = location.state.project;
+  console.log("TCL: ProjectDetails -> project", project);
   return (
     <Grid item xs={12}>
       <Card>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard {id}
+            {project.title}
           </Typography>
           <Typography variant="body2" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {project.content}
           </Typography>
           <Typography variant="overline" component="p" color="textSecondary">
-            September 14, 2016
+            {project.createdAt.seconds}
           </Typography>
         </CardContent>
       </Card>
