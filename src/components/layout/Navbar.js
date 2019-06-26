@@ -43,16 +43,20 @@ const Navbar = () => {
         <Container>
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
-              <Link to="/" component={RouterLink} className={classes.brandLogo}>
+              <Link
+                to="/"
+                component={RouterLink}
+                className={classes.brandLogo}
+              >
                 Firebase App
               </Link>
             </Typography>
+            {auth ? <SignedInLinks /> : <SignedOutLinks />}
             <Switch
               checked={auth}
               onChange={handleChange}
               aria-label="LoginSwitch"
             />
-            {auth ? <SignedInLinks /> : <SignedOutLinks />}
           </Toolbar>
         </Container>
       </AppBar>
