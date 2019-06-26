@@ -24,7 +24,7 @@ const Dashboard = props => {
 const mapStateToProps = state => {
   console.log("TCL: state", state);
   return {
-    projects: state.project.projects
+    projects: state.firestore.ordered.projects
   };
 };
 
