@@ -33,7 +33,7 @@ const ProjectDetails = ({ project }) => {
     <Grid item xs={12} className={classes.grid}>
       {project ? (
         <Card className={classes.card}>
-          <CardContent divider>
+          <CardContent >
             <Typography gutterBottom variant="h5" component="h2">
               {project.title}
             </Typography>
@@ -43,6 +43,9 @@ const ProjectDetails = ({ project }) => {
             <Divider className={classes.divider} />
             <Typography variant="overline" component="p" color="textSecondary">
               {moment.unix(project.createdAt.seconds).format("llll")}
+            </Typography>
+            <Typography variant="subtitle1" component="p" color="textSecondary">
+              Posted By: {`${project.authorFirstName} ${project.authorLastName}`}
             </Typography>
           </CardContent>
         </Card>
