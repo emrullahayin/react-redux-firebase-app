@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
@@ -43,11 +44,7 @@ const Navbar = () => {
         <Container>
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
-              <Link
-                to="/"
-                component={RouterLink}
-                className={classes.brandLogo}
-              >
+              <Link to="/" component={RouterLink} className={classes.brandLogo}>
                 Firebase App
               </Link>
             </Typography>
@@ -64,4 +61,8 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = state => {
+  console.log("state", state);
+  return {};
+};
+export default connect(mapStateToProps)(Navbar);
