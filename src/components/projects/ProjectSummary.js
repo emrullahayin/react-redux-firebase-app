@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -16,6 +17,7 @@ const useStyles = makeStyles(theme => ({
 
 const ProjectSummary = ({ project }) => {
   const classes = useStyles();
+
   return (
     <Card className={classes.card}>
       <CardContent>
@@ -26,7 +28,7 @@ const ProjectSummary = ({ project }) => {
           {project.content}
         </Typography>
         <Typography variant="overline" component="p" color="textSecondary">
-          {project.createdAt.seconds}
+          {moment.unix(project.createdAt.seconds).format("llll")}
         </Typography>
       </CardContent>
       <CardActions>
@@ -35,7 +37,13 @@ const ProjectSummary = ({ project }) => {
           color="primary"
           to={{
             pathname: `/project/${project.id}`,
-            state: { project: project }
+            state: {
+              project: {
+                title: project.title,
+                content: project.content,
+                time: moment.unix(project.createdAt.seconds).format("llll")
+              }
+            }
           }}
           component={Link}
         >

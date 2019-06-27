@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 
 const ProjectDetails = ({ location }) => {
   const project = location.state.project;
-  console.log("TCL: ProjectDetails -> project", project);
   return (
     <Grid item xs={12}>
       <Card>
@@ -18,7 +17,7 @@ const ProjectDetails = ({ location }) => {
             {project.content}
           </Typography>
           <Typography variant="overline" component="p" color="textSecondary">
-            {project.createdAt.seconds}
+            {project.time}
           </Typography>
         </CardContent>
       </Card>
