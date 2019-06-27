@@ -36,14 +36,7 @@ const ProjectSummary = ({ project }) => {
           size="small"
           color="primary"
           to={{
-            pathname: `/project/${project.id}`,
-            state: {
-              project: {
-                title: project.title,
-                content: project.content,
-                time: moment.unix(project.createdAt.seconds).format("llll")
-              }
-            }
+            pathname: `/project/${project.id}`
           }}
           component={Link}
         >
