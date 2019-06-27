@@ -13,15 +13,21 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const useStyles = makeStyles(theme => ({
   progress: {
     margin: theme.spacing(2)
+  },
+  grid: {
+    textAlign: "center"
+  },
+  card: {
+    textAlign: "left"
   }
 }));
 
 const ProjectDetails = ({ project }) => {
   const classes = useStyles();
   return (
-    <Grid item xs={12}>
+    <Grid item xs={12} className={classes.grid}>
       {project ? (
-        <Card>
+        <Card className={classes.card}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {project.title}
