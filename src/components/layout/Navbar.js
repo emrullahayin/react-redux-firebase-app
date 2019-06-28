@@ -1,6 +1,7 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { connect } from "react-redux";
+import { isLoaded, isEmpty } from "react-redux-firebase";
 
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
@@ -8,6 +9,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { Container } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import SignedOutLinks from "./SignedOutLinks";
 import SignedInLinks from "./SignedInLinks";
@@ -17,6 +19,9 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     position: "relative",
     zIndex: 1
+  },
+  progress: {
+    margin: theme.spacing(2)
   },
   title: {
     flexGrow: 1
@@ -31,6 +36,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Navbar = ({ auth }) => {
+  console.log("auth", auth);
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -42,8 +48,17 @@ const Navbar = ({ auth }) => {
                 Firebase App
               </Link>
             </Typography>
-            <SignedInLinks />
-            <SignedOutLinks />
+            {!isLoaded(auth) ? (
+              <CircularProgress
+                size={20}
+                className={classes.progress}
+                color="secondary"
+              />
+            ) : isEmpty(auth) ? (
+              <SignedOutLinks />
+            ) : (
+              <SignedInLinks />
+            )}
           </Toolbar>
         </Container>
       </AppBar>

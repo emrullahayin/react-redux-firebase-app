@@ -1,7 +1,6 @@
 import firebase from "./../../config/fbConfig";
 
 export const signIn = credentials => {
-  console.log("credentials", credentials);
   return (dispatch, getState, { getFirebase }) => {
     firebase
       .auth()
