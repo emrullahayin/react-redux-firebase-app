@@ -36,7 +36,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Navbar = ({ auth }) => {
-  console.log("auth", auth);
   const classes = useStyles();
   return (
     <div className={classes.root}>
