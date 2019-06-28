@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { signIn } from "../../store/actions/authActions";
 
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -22,9 +24,8 @@ const useStyles = makeStyles(theme => ({
   textField: {}
 }));
 
-const SignIn = () => {
+const SignIn = ({ signIn }) => {
   const classes = useStyles();
-
   const [values, setValues] = React.useState({
     email: "",
     password: ""
@@ -36,7 +37,7 @@ const SignIn = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(values);
+    signIn(values);
   };
 
   return (
@@ -86,4 +87,19 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+const mapStateToProps = state => {
+  return {
+    authError: state.auth.authError
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: creds => dispatch(signIn(creds))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn);
