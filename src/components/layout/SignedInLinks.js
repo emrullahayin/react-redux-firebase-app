@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { logOut } from "../../store/actions/authActions";
 
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
@@ -7,7 +9,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 
 import { NavLinkRouter } from "../config/NavLinkRouter";
 
-const SignedInLinks = () => {
+const SignedInLinks = ({ logOut }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -18,6 +20,10 @@ const SignedInLinks = () => {
   function handleClose() {
     setAnchorEl(null);
   }
+  const handleLogout = () => {
+    handleClose();
+    logOut();
+  };
 
   return (
     <div>
@@ -48,12 +54,19 @@ const SignedInLinks = () => {
         <MenuItem onClick={handleClose} to="/create" component={NavLinkRouter}>
           New Project
         </MenuItem>
-        <MenuItem to="/" component={NavLinkRouter} onClick={handleClose}>
-          Logout
-        </MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
     </div>
   );
 };
 
-export default SignedInLinks;
+const mapDispatchToProps = dispatch => {
+  return {
+    logOut: () => dispatch(logOut())
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignedInLinks);
