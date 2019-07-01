@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -21,10 +22,22 @@ const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
   },
-  textField: {}
+  textField: {},
+  alert: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    display: "flex",
+    padding: theme.spacing(2),
+    margin: theme.spacing(2, 0),
+    backgroundColor: theme.palette.error.dark,
+    color: "#FFF",
+    boxShadow:
+      "0 4px 20px 0 rgba(0, 0, 0,.14), 0 7px 10px -5px rgba(244, 67, 54,.4)"
+  }
 }));
 
-const SignIn = ({ signIn }) => {
+const SignIn = ({ signIn, authError }) => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     email: "",
@@ -83,6 +96,11 @@ const SignIn = ({ signIn }) => {
       >
         Login
       </Button>
+      {authError && (
+        <Paper className={classes.alert} display="none">
+          <Typography component="p">Login Failed.</Typography>
+        </Paper>
+      )}
     </form>
   );
 };
