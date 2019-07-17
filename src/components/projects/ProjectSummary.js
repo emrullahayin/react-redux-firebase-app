@@ -11,7 +11,8 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
+    textAlign: "left"
   }
 }));
 
