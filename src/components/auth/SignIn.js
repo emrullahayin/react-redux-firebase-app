@@ -46,7 +46,7 @@ const SignIn = ({ signIn, auth, authError }) => {
     email: "",
     password: ""
   });
-  console.log("auth", isEmpty(true));
+
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
   };
