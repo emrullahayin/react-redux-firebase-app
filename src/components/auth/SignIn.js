@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { isLoaded, isEmpty } from "react-redux-firebase";
+
 import { signIn } from "../../store/actions/authActions";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,6 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -37,13 +40,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SignIn = ({ signIn, authError }) => {
+const SignIn = ({ signIn, auth, authError }) => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     email: "",
     password: ""
   });
-
+  console.log("auth", isEmpty(true));
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
   };
@@ -54,60 +57,67 @@ const SignIn = ({ signIn, authError }) => {
   };
 
   return (
-    <form
-      className={classes.container}
-      onSubmit={handleSubmit}
-      noValidate
-      autoComplete="off"
-    >
-      <Typography variant="h5" component="h6">
-        Sign In
-      </Typography>
-      <TextField
-        value={values.email}
-        onChange={handleChange("email")}
-        id="login-email-input"
-        label="Email"
-        className={classes.textField}
-        type="email"
-        name="email"
-        autoComplete="email"
-        margin="normal"
-        variant="outlined"
-        fullWidth
-      />
-      <TextField
-        id="login-password-input"
-        label="Password"
-        className={classes.textField}
-        value={values.name}
-        onChange={handleChange("password")}
-        type="password"
-        margin="normal"
-        variant="outlined"
-        fullWidth
-      />
-      <Button
-        size="large"
-        type="submit"
-        variant="contained"
-        color="primary"
-        className={classes.button}
-      >
-        Login
-      </Button>
-      {authError && (
-        <Paper className={classes.alert} display="none">
-          <Typography component="p">Login Failed.</Typography>
-        </Paper>
+    <React.Fragment>
+      {!isEmpty(auth) ? (
+        <form
+          className={classes.container}
+          onSubmit={handleSubmit}
+          noValidate
+          autoComplete="off"
+        >
+          <Typography variant="h5" component="h6">
+            Sign In
+          </Typography>
+          <TextField
+            value={values.email}
+            onChange={handleChange("email")}
+            id="login-email-input"
+            label="Email"
+            className={classes.textField}
+            type="email"
+            name="email"
+            autoComplete="email"
+            margin="normal"
+            variant="outlined"
+            fullWidth
+          />
+          <TextField
+            id="login-password-input"
+            label="Password"
+            className={classes.textField}
+            value={values.name}
+            onChange={handleChange("password")}
+            type="password"
+            margin="normal"
+            variant="outlined"
+            fullWidth
+          />
+          <Button
+            size="large"
+            type="submit"
+            variant="contained"
+            color="primary"
+            className={classes.button}
+          >
+            Login
+          </Button>
+          {authError && (
+            <Paper className={classes.alert} display="none">
+              <Typography component="p">Login Failed.</Typography>
+            </Paper>
+          )}
+        </form>
+      ) : (
+        <CircularProgress />
       )}
-    </form>
+    </React.Fragment>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    authError: state.auth.authError
+    authError: state.auth.authError,
+    auth: state.firebase.auth
   };
 };
 
