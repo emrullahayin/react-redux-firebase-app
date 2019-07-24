@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { isLoaded, isEmpty } from "react-redux-firebase";
+import { isEmpty } from "react-redux-firebase";
 
 import { signIn } from "../../store/actions/authActions";
 
